@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Lesson: How to Learn</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body class="text-stone-800">
+  <div class="max-w-6xl mx-auto p-4 md:p-8">
+    <header class="text-center mb-8">
+      <h1 class="text-3xl md:text-5xl font-bold text-stone-900">
+        Learning How to Learn
+      </h1>
+      <p class="text-lg text-stone-600 mt-2">
+        An interactive guide to mastering new skills
+      </p>
+    </header>
+
+    <nav class="flex flex-wrap justify-start border-b-2 border-stone-200 mb-8">
+      <button
+        class="nav-button py-4 px-3 md:px-6 text-sm md:text-base font-medium text-stone-500 hover:text-amber-600 nav-active"
+        data-target="content-welcome">
+        Welcome
+      </button>
+      <button class="nav-button py-4 px-3 md:px-6 text-sm md:text-base font-medium text-stone-500 hover:text-amber-600"
+        data-target="content-modes">
+        1. Two Modes of Thinking
+      </button>
+      <button class="nav-button py-4 px-3 md:px-6 text-sm md:text-base font-medium text-stone-500 hover:text-amber-600"
+        data-target="content-chunking">
+        2. What is a Chunk?
+      </button>
+      <button class="nav-button py-4 px-3 md:px-6 text-sm md:text-base font-medium text-stone-500 hover:text-amber-600"
+        data-target="content-procrastination">
+        3. Procrastination & Memory
+      </button>
+      <button class="nav-button py-4 px-3 md:px-6 text-sm md:text-base font-medium text-stone-500 hover:text-amber-600"
+        data-target="content-techniques">
+        4. Effective Learning
+      </button>
+      <button class="nav-button py-4 px-3 md:px-6 text-sm md:text-base font-medium text-stone-500 hover:text-amber-600"
+        data-target="content-testing">
+        5. Test Taking
+      </button>
+    </nav>
+
+    <main>
+      <section id="content-welcome" class="content-section content-active p-4 rounded-lg bg-white shadow-sm">
+        <h2 class="text-2xl font-bold mb-4 text-amber-700">
+          Welcome to Your Learning Journey!
+        </h2>
+        <p class="text-lg mb-4">
+          This interactive guide is based on the key principles from the
+          "Learn to Learn" lesson. Learning is a skill, and just like any
+          other skill, it can be improved with practice and the right
+          techniques.
+        </p>
+        <p class="mb-4">
+          In this guide, we'll explore the two different ways our brains
+          think, how to build strong "chunks" of knowledge, how to overcome
+          procrastination, and how to study effectively for tests. The goal
+          isn't just to memorize facts, but to build a deep and flexible
+          understanding.
+        </p>
+        <p class="font-semibold">
+          Click through the tabs at the top to begin your journey.
+        </p>
+      </section>
+
+      <section id="content-modes" class="content-section p-4">
+        <h2 class="text-2xl font-bold mb-4 text-amber-700">
+          1. The Two Modes of Thinking
+        </h2>
+        <p class="text-lg mb-6">
+          Your brain operates in two fundamentally different modes: the
+          <strong>Focused Mode</strong> and the <strong>Diffuse Mode</strong>.
+          You can only be in one mode at a time. Effective learning requires
+          switching between them.
+        </p>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="rounded-lg bg-white shadow-sm p-6">
+            <h3 class="text-xl font-semibold mb-2">🧠 Focused Mode</h3>
+            <p class="mb-4">
+              This is your "concentration" mode. It's active when you're
+              intently focusing on something, like solving a math problem or
+              writing a sentence. Your thoughts follow familiar, established
+              paths.
+            </p>
+            <p>
+              <strong>Analogy:</strong> A pinball machine where the rubber
+              bumpers are very close together. The ball (your thought) moves
+              along a tight, predictable path.
+            </p>
+          </div>
+          <div class="rounded-lg bg-white shadow-sm p-6">
+            <h3 class="text-xl font-semibold mb-2">☁️ Diffuse Mode</h3>
+            <p class="mb-4">
+              This is your "relaxed" mode. It's active when you let your mind
+              wander, like when you're on a walk, in the shower, or drifting
+              off to sleep. This mode allows your brain to make new, creative
+              connections.
+            </p>
+            <p>
+              <strong>Analogy:</strong> A pinball machine where the bumpers
+              are spread far apart. The ball (your thought) can bounce around
+              widely, connecting different ideas.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-8 p-6 rounded-lg bg-white shadow-sm">
+          <h3 class="text-xl font-semibold mb-4 text-center">
+            Visualize the Analogy
+          </h3>
+          <p class="text-center mb-4">
+            Click the buttons to see a simple representation of the pinball
+            analogy. Notice how the "Focused" path is tight, while the
+            "Diffuse" path ranges widely.
+          </p>
+          <div class="flex justify-center gap-4 mb-4">
+            <button id="show-focused-btn"
+              class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-4 rounded">
+              Show Focused Mode
+            </button>
+            <button id="show-diffuse-btn"
+              class="bg-stone-500 hover:bg-stone-600 text-white font-bold py-2 px-4 rounded">
+              Show Diffuse Mode
+            </button>
+          </div>
+          <div class="pinball-area">
+            <div class="pinball-ball" id="pinball-ball"></div>
+            <div id="pinball-bumpers"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="content-chunking" class="content-section p-4">
+        <h2 class="text-2xl font-bold mb-4 text-amber-700">
+          2. What is a Chunk?
+        </h2>
+        <p class="text-lg mb-6">
+          A "chunk" is a piece of information that is bound together by
+          meaning. Think of it like a single, compressed mental file. When
+          you're learning a new song on the guitar, you first learn individual
+          notes (small pieces). Soon, you chunk those notes into a chord. Then
+          you chunk the chords into a chord progression.
+        </p>
+        <div class="rounded-lg bg-white shadow-sm p-6">
+          <h3 class="text-xl font-semibold mb-4">
+            How to Build Strong Chunks:
+          </h3>
+          <ol class="list-decimal list-inside space-y-3">
+            <li>
+              <strong>Focus:</strong> First, give your undivided attention to
+              the information you want to chunk. No distractions!
+            </li>
+            <li>
+              <strong>Understand:</strong> Grasp the basic idea. Don't just
+              memorize; understand the "why" and "how." This connects your new
+              chunk to other chunks you already know.
+            </li>
+            <li>
+              <strong>Practice & Recall:</strong> This is the most critical
+              step. Actively recall the information from your own memory
+              (don't just re-read it). Practice builds and strengthens the
+              neural pathways, making the chunk solid and easy to retrieve.
+            </li>
+          </ol>
+          <p class="mt-4 italic">
+            Building a library of well-practiced chunks is the foundation of
+            expertise.
+          </p>
+        </div>
+      </section>
+
+      <section id="content-procrastination" class="content-section p-4">
+        <h2 class="text-2xl font-bold mb-4 text-amber-700">
+          3. Overcoming Procrastination
+        </h2>
+        <p class="text-lg mb-6">
+          Procrastination happens when you face a task you find unpleasant.
+          Your brain activates pain centers, so you turn your attention to
+          something more pleasant to feel better temporarily. The key is to
+          have a simple, effective tool to manage it.
+        </p>
+
+        <div class="rounded-lg bg-white shadow-sm p-6 mb-8">
+          <h3 class="text-xl font-semibold mb-4">
+            The Tool: The Pomodoro Technique 🍅
+          </h3>
+          <p class="mb-6">
+            This technique is incredibly effective. It's a mental tool that
+            helps you push through the "pain" of starting and focuses you for
+            short, manageable bursts.
+          </p>
+          <div class="flex flex-col md:flex-row justify-around items-center space-y-4 md:space-y-0 md:space-x-4">
+            <div class="text-center p-4 rounded-lg bg-amber-50 w-full md:w-auto">
+              <div class="text-4xl">1.</div>
+              <div class="font-semibold mt-2">Set Timer: 25 Min</div>
+              <p class="text-sm text-stone-600">Turn off ALL distractions.</p>
+            </div>
+            <div class="text-2xl text-amber-500 hidden md:block">→</div>
+            <div class="text-center p-4 rounded-lg bg-amber-50 w-full md:w-auto">
+              <div class="text-4xl">2.</div>
+              <div class="font-semibold mt-2">Work Focused</div>
+              <p class="text-sm text-stone-600">
+                Work on the task. No excuses.
+              </p>
+            </div>
+            <div class="text-2xl text-amber-500 hidden md:block">→</div>
+            <div class="text-center p-4 rounded-lg bg-green-50 w-full md:w-auto">
+              <div class="text-4xl">3.</div>
+              <div class="font-semibold mt-2">Reward: 5 Min Break</div>
+              <p class="text-sm text-stone-600">
+                Relax! Let your diffuse mode work.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-lg bg-white shadow-sm p-6">
+          <h3 class="text-xl font-semibold mb-4">
+            Working Memory vs. Long-Term Memory
+          </h3>
+          <p class="mb-4">
+            Think of <strong>Working Memory</strong> as a small, temporary
+            blackboard. It can only hold a few items at once (maybe 4-7). To
+            move information from this temporary blackboard into the vast
+            warehouse of <strong>Long-Term Memory</strong>, you need practice
+            and repetition over time.
+          </p>
+          <p class="font-semibold">
+            This is why cramming doesn't work! It overloads your working
+            memory and doesn't give your brain time to build the strong,
+            permanent connections of long-term memory.
+          </p>
+        </div>
+      </section>
+
+      <section id="content-techniques" class="content-section p-4">
+        <h2 class="text-2xl font-bold mb-4 text-amber-700">
+          4. Illusions of Competence vs. Effective Learning
+        </h2>
+        <p class="text-lg mb-6">
+          Many common study habits feel productive but are actually a waste of
+          time. They create an "illusion of competence" – you *think* you know
+          the material, but you can't retrieve it when needed.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+          <div class="rounded-lg border-2 border-red-300 bg-red-50 p-6">
+            <h3 class="text-xl font-semibold mb-2 text-red-700">
+              🚫 Don't Do This (Illusions)
+            </h3>
+            <ul class="list-disc list-inside space-y-2">
+              <li>
+                <strong>Passive Re-reading:</strong> Simply reading the text
+                over and over. Your brain mistakes familiarity for mastery.
+              </li>
+              <li>
+                <strong>Excessive Highlighting:</strong> Highlighting dozens
+                of sentences. It feels like work, but you're not encoding the
+                information.
+              </li>
+              <li>
+                <strong>Glancing at Solutions:</strong> Looking at the answer
+                and thinking "Oh yeah, I knew that." This is not the same as
+                solving it yourself.
+              </li>
+            </ul>
+          </div>
+          <div class="rounded-lg border-2 border-green-300 bg-green-50 p-6">
+            <h3 class="text-xl font-semibold mb-2 text-green-700">
+              ✅ Do This (Effective)
+            </h3>
+            <ul class="list-disc list-inside space-y-2">
+              <li>
+                <strong>Active Recall:</strong> Look away from the page and
+                try to recall the main idea. This is *the* most effective
+                technique.
+              </li>
+              <li>
+                <strong>Practice Testing:</strong> Constantly quiz yourself.
+                Use flashcards, do problems, explain the concept to someone
+                else.
+              </li>
+              <li>
+                <strong>Spaced Repetition:</strong> Practice retrieving
+                information over several days and weeks, not just all at once.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="text-xl font-semibold mb-4 text-center">
+          Conceptual Effectiveness of Techniques
+        </h3>
+        <p class="text-center mb-4">
+          This chart visualizes the relative effectiveness of different study
+          techniques. Notice how "active" methods are far more efficient for
+          building long-term memory.
+        </p>
+        <div class="chart-container">
+          <canvas id="learningChart"></canvas>
+        </div>
+      </section>
+
+      <section id="content-testing" class="content-section p-4">
+        <h2 class="text-2xl font-bold mb-4 text-amber-700">
+          5. Test Taking Strategies
+        </h2>
+        <p class="text-lg mb-6">
+          A test is a performance. Good preparation is key, but how you handle
+          the test itself also matters. Here are some strategies to help you
+          perform your best.
+        </p>
+        <div class="rounded-lg bg-white shadow-sm p-6">
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <span class="text-green-500 text-2xl mr-3">✔</span>
+              <div>
+                <h4 class="font-semibold">
+                  Start with the Hard, then Move to Easy
+                </h4>
+                <p class="text-stone-600">
+                  Briefly look over the test, and start with the hardest
+                  problem. Work on it for a minute or two. If you get stuck,
+                  *immediately* switch to an easy problem. This "primes" your
+                  diffuse mode to work on the hard problem in the background.
+                </p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 text-2xl mr-3">✔</span>
+              <div>
+                <h4 class="font-semibold">The "Blink" Check</h4>
+                <p class="text-stone-600">
+                  When you finish a problem, blink, shift your attention, and
+                  then re-read the question. Ask yourself: "Does this answer
+                  *really* make sense?" This helps you catch simple mistakes
+                  that your focused mode might have overlooked.
+                </p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 text-2xl mr-3">✔</span>
+              <div>
+                <h4 class="font-semibold">
+                  Check from a Different Perspective
+                </h4>
+                <p class="text-stone-600">
+                  Is there another way to solve the problem? Can you estimate
+                  the answer to see if yours is in the right ballpark? In
+                  science, check your units. This is a powerful way to verify
+                  your work.
+                </p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 text-2xl mr-3">✔</span>
+              <div>
+                <h4 class="font-semibold">Work from Back to Front</h4>
+                <p class="text-stone-600">
+                  When checking your test, try working from the last question
+                  to the first. This gives your brain a fresh perspective and
+                  can help you spot errors you missed when working forward.
+                </p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 text-2xl mr-3">✔</span>
+              <div>
+                <h4 class="font-semibold">Manage Your Nerves</h4>
+                <p class="text-stone-600">
+                  Some stress is normal. But if you feel overwhelmed, take a
+                  moment to focus on your breathing. Deep breaths can calm the
+                  panic and let your focused mode get back to work. Remember,
+                  you've prepared for this!
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="./script.js"></script>
+</body>
+
+</html>
