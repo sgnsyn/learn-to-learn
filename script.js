@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const navButtons = document.querySelectorAll(".nav-button");
   const contentSections = document.querySelectorAll(".content-section");
   const welcomeSection = document.getElementById("content-welcome");
-  const chartSection = document.getElementById("content-techniques");
   let chartInitialized = false;
 
   navButtons.forEach((button) => {
